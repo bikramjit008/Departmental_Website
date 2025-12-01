@@ -1,11 +1,6 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../auth/AuthContext.jsx";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
 function FacultyList() {
-  const { isAdmin } = useContext(AuthContext);
-    const navigate = useNavigate();
-
   const faculty = [
     {
       id: 1,
@@ -30,6 +25,10 @@ function FacultyList() {
     }
   ];
 
+  const showAwardPopup = () => {
+    alert("Awards section is under development.");
+  };
+
   return (
     <div className="p-10 mt-24 bg-linear-to-b from-blue-50 to-white min-h-screen">
 
@@ -53,18 +52,15 @@ function FacultyList() {
             {/* TEXT INFO */}
             <h2 className="mt-5 text-2xl font-bold text-gray-800">{f.name}</h2>
             <p className="text-gray-600 text-md">{f.designation}</p>
-
             <p className="mt-3 text-blue-700 font-medium">{f.email}</p>
 
-            {/* EDIT BUTTON FOR ADMIN ONLY */}
-            {isAdmin && (
-                <button
-                  onClick={() => navigate(`/faculty/edit/${f.id}`)}
-                  className="mt-5 px-6 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
-                >
-                  Edit
-                </button>
-            )}
+            {/* SEE AWARDS BUTTON */}
+            <button
+              onClick={showAwardPopup}
+              className="mt-5 px-4 py-2 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 transition-all"
+            >
+              See Awards
+            </button>
           </div>
         ))}
       </div>
