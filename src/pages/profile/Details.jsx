@@ -1,9 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 /* ---------------------------------------------------
    DEMO STUDENT DATABASE (Replace with real API)
 ----------------------------------------------------*/
-
 const studentDB = {
   photo: "https://i.ibb.co/4pDNDk1/avatar.png",
 
@@ -73,11 +73,8 @@ const studentDB = {
   ],
 };
 
-/* ---------------------------------------------------
-   MAIN COMPONENT
-----------------------------------------------------*/
-
-const Details = () => {
+// DetailsWithQuery component
+const DetailsWithQuery = () => {
   const s = studentDB;
   const navigate = useNavigate();
 
@@ -91,29 +88,28 @@ const Details = () => {
 
       {/* Profile Header */}
       <div className="bg-white shadow-lg p-5 rounded-lg flex gap-6 mb-6">
-
-        {/* Photo */}
         <img
           src={s.photo}
           alt="Student Photo"
           className="w-32 h-32 rounded-lg border object-cover"
         />
 
-        {/* Basic Info */}
         <div>
           <p className="text-xl font-semibold text-gray-800">{s.basic.name}</p>
           <p className="text-gray-600">Roll: {s.academic.roll}</p>
           <p className="text-gray-600">Reg No: {s.academic.registration}</p>
           <p className="text-gray-600">Dept: {s.academic.department}</p>
 
-          <button className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          onClick={() => navigate("/profile/editProfile")}>
+          <button
+            className="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            onClick={() => navigate("/profile/editProfile")}
+          >
             Edit Profile
           </button>
         </div>
       </div>
 
-      {/* BASIC DETAILS */}
+      {/* PERSONAL INFO */}
       <section className="bg-white shadow-md rounded-lg p-5 mb-6">
         <h2 className="text-xl font-semibold mb-3 text-gray-700">
           Personal Information
@@ -127,7 +123,7 @@ const Details = () => {
         </div>
       </section>
 
-      {/* ACADEMIC DETAILS */}
+      {/* ACADEMIC */}
       <section className="bg-white shadow-md rounded-lg p-5 mb-6">
         <h2 className="text-xl font-semibold mb-3 text-gray-700">
           Academic Information
@@ -143,21 +139,15 @@ const Details = () => {
         </div>
       </section>
 
-      {/* CONTACT DETAILS */}
+      {/* CONTACT */}
       <section className="bg-white shadow-md rounded-lg p-5 mb-6">
         <h2 className="text-xl font-semibold mb-3 text-gray-700">
           Contact Information
         </h2>
 
-        <p className="text-gray-700">
-          <span className="font-semibold">Email:</span> {s.contact.email}
-        </p>
-        <p className="text-gray-700">
-          <span className="font-semibold">Phone:</span> {s.contact.phone}
-        </p>
-        <p className="text-gray-700">
-          <span className="font-semibold">Alternate Phone:</span> {s.contact.alternatePhone}
-        </p>
+        <p className="text-gray-700"><span className="font-semibold">Email:</span> {s.contact.email}</p>
+        <p className="text-gray-700"><span className="font-semibold">Phone:</span> {s.contact.phone}</p>
+        <p className="text-gray-700"><span className="font-semibold">Alternate Phone:</span> {s.contact.alternatePhone}</p>
       </section>
 
       {/* ADDRESS */}
@@ -165,33 +155,23 @@ const Details = () => {
         <h2 className="text-xl font-semibold mb-3 text-gray-700">Address</h2>
 
         <div className="grid md:grid-cols-2 gap-5">
-          {/* Present Address */}
           <div>
             <h3 className="font-semibold mb-1">Present Address</h3>
-            <p className="text-gray-700">{s.address.present.line1}</p>
-            <p className="text-gray-700">
-              {s.address.present.city}, {s.address.present.district}
-            </p>
-            <p className="text-gray-700">
-              {s.address.present.state} - {s.address.present.pin}
-            </p>
+            <p>{s.address.present.line1}</p>
+            <p>{s.address.present.city}, {s.address.present.district}</p>
+            <p>{s.address.present.state} - {s.address.present.pin}</p>
           </div>
 
-          {/* Permanent */}
           <div>
             <h3 className="font-semibold mb-1">Permanent Address</h3>
-            <p className="text-gray-700">{s.address.permanent.line1}</p>
-            <p className="text-gray-700">
-              {s.address.permanent.city}, {s.address.permanent.district}
-            </p>
-            <p className="text-gray-700">
-              {s.address.permanent.state} - {s.address.permanent.pin}
-            </p>
+            <p>{s.address.permanent.line1}</p>
+            <p>{s.address.permanent.city}, {s.address.permanent.district}</p>
+            <p>{s.address.permanent.state} - {s.address.permanent.pin}</p>
           </div>
         </div>
       </section>
 
-      {/* GUARDIAN DETAILS */}
+      {/* GUARDIAN */}
       <section className="bg-white shadow-md rounded-lg p-5 mb-6">
         <h2 className="text-xl font-semibold mb-3 text-gray-700">
           Guardian Information
@@ -200,21 +180,21 @@ const Details = () => {
         <div className="grid md:grid-cols-2 gap-4">
           <div>
             <h3 className="font-semibold">Father</h3>
-            <p className="text-gray-700">{s.guardian.father.name}</p>
-            <p className="text-gray-700">{s.guardian.father.phone}</p>
-            <p className="text-gray-700">{s.guardian.father.occupation}</p>
+            <p>{s.guardian.father.name}</p>
+            <p>{s.guardian.father.phone}</p>
+            <p>{s.guardian.father.occupation}</p>
           </div>
 
           <div>
             <h3 className="font-semibold">Mother</h3>
-            <p className="text-gray-700">{s.guardian.mother.name}</p>
-            <p className="text-gray-700">{s.guardian.mother.phone}</p>
-            <p className="text-gray-700">{s.guardian.mother.occupation}</p>
+            <p>{s.guardian.mother.name}</p>
+            <p>{s.guardian.mother.phone}</p>
+            <p>{s.guardian.mother.occupation}</p>
           </div>
         </div>
       </section>
 
-      {/* PREVIOUS SEMESTER MARKS */}
+      {/* PREVIOUS MARKS */}
       <section className="bg-white shadow-md rounded-lg p-5 mb-6">
         <h2 className="text-xl font-semibold mb-3 text-gray-700">
           Previous Semester Results
@@ -242,34 +222,61 @@ const Details = () => {
       </section>
 
       {/* CERTIFICATES */}
-      <section className="bg-white shadow-md rounded-lg p-5 mb-8">
+      <section className="bg-white shadow-md rounded-lg p-5 mb-10">
         <h2 className="text-xl font-semibold mb-3 text-gray-700">
           Certificates Issued
         </h2>
 
         <ul className="space-y-3">
           {s.certificates.map((c, i) => (
-            <li
-              key={i}
-              className="flex items-center justify-between bg-gray-50 p-3 rounded border"
-            >
+            <li key={i} className="flex items-center justify-between bg-gray-50 p-3 rounded border">
               <div>
                 <p className="font-semibold">{c.name}</p>
                 <p className="text-gray-600 text-sm">Issued: {c.date}</p>
               </div>
 
-              <a
-                href={c.file}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-              >
+              <a href={c.file} className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
                 Download
               </a>
             </li>
           ))}
         </ul>
       </section>
+
+    
+      {/* QUERY ADDRESSAL SECTION */}
+      
+      <h2 className="text-2xl font-bold text-blue-700 mb-6 text-center">
+        Query Addressal
+      </h2>
+
+      <div className="grid gap-6 w-full max-w-md mx-auto pb-10">
+        <Link
+          to="/apply/noc"
+          className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 flex items-center justify-between"
+        >
+          <span className="text-lg font-semibold">Apply for NOC</span>
+          <span className="text-blue-600 font-bold">&rarr;</span>
+        </Link>
+
+        <Link
+          to="/apply/certificate"
+          className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 flex items-center justify-between"
+        >
+          <span className="text-lg font-semibold">Request a Certificate</span>
+          <span className="text-blue-600 font-bold">&rarr;</span>
+        </Link>
+
+        <Link
+          to="/apply/query"
+          className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 flex items-center justify-between"
+        >
+          <span className="text-lg font-semibold">Submit General Query</span>
+          <span className="text-blue-600 font-bold">&rarr;</span>
+        </Link>
+      </div>
     </div>
   );
 };
 
-export default Details;
+export default DetailsWithQuery;

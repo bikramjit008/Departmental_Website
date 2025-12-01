@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../auth/AuthContext.jsx";
 
 function Awards() {
-  const { isAdmin } = useContext(AuthContext);
-
   const awards = [
     {
       id: 1,
