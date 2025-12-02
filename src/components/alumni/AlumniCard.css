@@ -1,0 +1,118 @@
+/* -------- Page Layout -------- */
+.alumni-page {
+  padding: 60px 6%;
+  background: #f6f8fc;
+  min-height: 100vh;
+}
+
+.alumni-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.alumni-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #1b2c48;
+  margin-bottom: 10px;
+}
+
+.alumni-subtitle {
+  font-size: 1.1rem;
+  color: #576173;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* -------- GRID SECTION -------- */
+.alumni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+  justify-content: center;
+}
+
+/* -------- Card Styling -------- */
+.alumni-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+  transition: transform 0.35s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.alumni-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+}
+
+/* Image Section */
+.alumni-image-section {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.alumni-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.alumni-card:hover .alumni-image {
+  transform: scale(1.07);
+}
+
+.alumni-gradient {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+}
+
+/* Content Section */
+.alumni-info {
+  padding: 22px;
+  text-align: center;
+}
+
+.alumni-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin-bottom: 4px;
+}
+
+.alumni-position {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #005fcc;
+  margin-bottom: 6px;
+}
+
+.alumni-department,
+.alumni-batch {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+/* Button */
+.alumni-btn {
+  margin-top: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #005fcc;
+  color: white;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.alumni-btn:hover {
+  background: #003d99;
+}
