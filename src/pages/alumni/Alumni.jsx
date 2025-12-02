@@ -6,10 +6,12 @@ export default function Alumni() {
   const [alumniData, setAlumniData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/alumni")   
+    fetch("http://localhost:5000/api/alumni")
       .then((res) => res.json())
       .then((data) => {
-        setAlumniData(data);
+        if (data.success) {
+          setAlumniData(data.data); // FIX: Access data.data
+        }
       })
       .catch((err) => {
         console.error("Error fetching alumni data:", err);
@@ -28,7 +30,7 @@ export default function Alumni() {
       <div className="alumni-grid">
         {alumniData.map((alum) => (
           <AlumniCard
-            key={alum.id}
+            key={alum._id}
             name={alum.name}
             photo={alum.profilePhoto}
             department={alum.department}

@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
-
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import DepartmentPage from "./pages/department/DepartmentPage.jsx";
@@ -12,9 +11,8 @@ import About from "./components/homeComponents/about/About";
 import ApplyCertificate from "./pages/profile/forms/ApplyCertificate.jsx";
 import ApplyNOC from "./pages/profile/forms/ApplyNOC.jsx";
 import ApplyQuery from "./pages/profile/forms/ApplyQuery.jsx";
-
 import "./App.css";
-import Alumni from "./pages/Alumni/Alumni.jsx";
+// import Alumni from "./pages/Alumni/Alumni.jsx";
 
 function App() {
   return (
