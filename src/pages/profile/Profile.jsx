@@ -5,10 +5,12 @@ import "./Profile.css";
 const DetailsWithQuery = () => {
   const navigate = useNavigate();
   const [studentDB, setStudentDB] = useState(null);
+  const API_URI = import.meta.env.API_URI;
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
+        // const response = await fetch(`${API_URI}/profile/221000110057`);
         const response = await fetch("http://localhost:5000/api/profile/221000110057");
         const data = await response.json();
         setStudentDB(data);
