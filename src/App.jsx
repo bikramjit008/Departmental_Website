@@ -14,6 +14,7 @@ import ApplyNOC from "./pages/profile/forms/ApplyNOC.jsx";
 import ApplyQuery from "./pages/profile/forms/ApplyQuery.jsx";
 
 import "./App.css";
+import Alumni from "./pages/Alumni/Alumni.jsx";
 
 function App() {
   return (
