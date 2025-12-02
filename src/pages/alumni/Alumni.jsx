@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AlumniCard from "../../components/alumni/AlumniCard.jsx";
 import "./Alumni.css";
 
-export default function AlumniList() {
+export default function Alumni() {
   const [alumniData, setAlumniData] = useState([]);
 
   useEffect(() => {
