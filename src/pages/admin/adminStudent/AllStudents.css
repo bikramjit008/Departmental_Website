@@ -1,6 +1,7 @@
 .students-container {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   gap: 20px;
   padding: 30px;
@@ -52,3 +53,45 @@
 .student-card:hover .view-btn {
   display: inline-block;
 }
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.year-buttons button{
+  margin-right: 10px;
+}
+
+.year-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #ddd;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+.year-btn:hover {
+  background: #ccc;
+}
+
+.active-year {
+  background: #4CAF50;
+  color: white;
+}
+
+.students-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px; /* space between cards */
+}
+
+/* ============ BUTTON STYLES ============ */
+
+

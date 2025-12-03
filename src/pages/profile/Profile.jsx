@@ -182,7 +182,7 @@ const DetailsWithQuery = () => {
       </section> */}
 
       {/* QUERY ADDRESSAL */}
-      <h2 className="query-title">Query Addressal</h2>
+      {/* <h2 className="query-title">Query Addressal</h2>
 
       <div className="query-grid">
         <Link to="/profile/applyNOC" className="query-card">
@@ -198,8 +198,8 @@ const DetailsWithQuery = () => {
         <Link to="/profile/applyQuery" className="query-card">
           <span>Submit General Query</span>
           <span className="arrow">&rarr;</span>
-        </Link>
-      </div>
+        </Link> */}
+      {/* </div> */}
     </div>
   );
 };
