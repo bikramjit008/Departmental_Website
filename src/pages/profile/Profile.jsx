@@ -5,23 +5,40 @@ import "./Profile.css";
 const DetailsWithQuery = () => {
   const navigate = useNavigate();
   const [studentDB, setStudentDB] = useState(null);
+  const [error, setError] = useState("");
   const API_URI = import.meta.env.API_URI;
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // const response = await fetch(`${API_URI}/profile/221000110057`);
-        const response = await fetch("http://localhost:5000/api/profile/221000110057");
+        const response = await fetch("http://localhost:5000/api/profile", {
+          method: "GET",
+          credentials: "include", // SEND COOKIE
+        });
+
+        if (response.status === 401) {
+          setError("Please login again.");
+          return;
+        }
+
         const data = await response.json();
+
+        if (!data?.basic) {
+          setError("Invalid response from server.");
+          return;
+        }
+
         setStudentDB(data);
       } catch (error) {
-        console.error("Error fetching student profile:", error);
+        console.error("Error fetching profile:", error);
+        setError("Server error.");
       }
     };
 
     fetchProfile();
   }, []);
 
+  if (error) return <h2 style={{ textAlign: "center" }}>{error}</h2>;
   if (!studentDB) return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
 
   const s = studentDB;
@@ -40,7 +57,7 @@ const DetailsWithQuery = () => {
           <p className="profile-line">Reg No: {s.academic.registration}</p>
           <p className="profile-line">Dept: {s.academic.department}</p>
 
-          <button className="edit-btn" onClick={() => navigate("/profile/editProfile")}>
+          <button className="edit-btn" onClick={() => alert("under development")}>
             Edit Profile
           </button>
         </div>

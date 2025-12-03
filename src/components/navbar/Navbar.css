@@ -137,6 +137,81 @@
   cursor: pointer;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.login-btn {
+  padding: 6px 16px;
+  background: #427af3;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #2563eb;
+}
+
+.logout-btn{
+  padding: 6px 16px;
+  background: #e83c3c;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #c53030;
+}
+
+/* Avatar Wrapper (desktop) */
+.nav-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;         /* keeps image inside circle */
+  border: 2px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.nav-avatar:hover {
+  border-color: #4a4df3;
+}
+
+/* Avatar Image */
+.nav-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ---------- MOBILE AVATAR ---------- */
+.nav-avatar-mobile {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  margin-left: 20px;
+}
+
+.nav-avatar-mobile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 /* ========== RESPONSIVE MEDIA QUERIES ========== */
 @media (max-width: 900px) {
 

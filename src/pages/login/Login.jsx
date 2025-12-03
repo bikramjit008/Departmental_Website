@@ -1,39 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [id, setid] = useState("221000110057");
+  const [password, setPassword] = useState("221000110057");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
-
+  const { setUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (username.trim() === "" || password.trim() === "") {
-      setError("Please enter both username and password.");
+    if (!id || !password) {
+      setError("Please enter both ID and password.");
       return;
     }
 
     try {
-        const res = await axios.get("http://localhost:5000/api/login", {
-          username,
-          password,
-        });
-    
-        localStorage.setItem("token", res.data.token);
-    
-        navigate("/profile");
-      } catch (error) {
-        setError("Invalid username or password");
-      }
+      const res = await axios.post(
+        "http://localhost:5000/api/login",
+        { id, password },
+        { withCredentials: true }
+      );
 
+      // console.log("Login Success:", res.data);
+
+      // Save user to context
+      setUser(res.data.user);
+
+      navigate("/profile");
+    } catch (error) {
+      setError("Invalid ID or password");
+      console.log(error);
+    }
   };
 
   return (
@@ -45,9 +50,9 @@ const Login = () => {
 
         <input
           type="text"
-          placeholder="Enter Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter ID"
+          value={id}
+          onChange={(e) => setid(e.target.value)}
           className="login-input"
         />
 
@@ -75,7 +80,7 @@ const Login = () => {
           Forgot Password?
         </p>
 
-        <button type="submit" className="login-btn">
+        <button type="submit" className="login-button">
           Login
         </button>
       </form>
