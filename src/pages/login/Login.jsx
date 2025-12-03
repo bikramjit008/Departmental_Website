@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
@@ -9,10 +9,18 @@ const Login = () => {
   const [password, setPassword] = useState("221000110057");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-
-  const { setUser } = useContext(AuthContext);
-
+  const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      if(user.type === "admin") {
+        navigate("/admin/students");
+      } else {
+        navigate("/profile");
+      }
+    }
+  }, [user, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +42,11 @@ const Login = () => {
       // Save user to context
       setUser(res.data.user);
 
-      navigate("/profile");
+      if(res.data.user.type === "admin") {
+        navigate("/admin/students");
+      } else {
+        navigate("/profile");
+      }
     } catch (error) {
       setError("Invalid ID or password");
       console.log(error);

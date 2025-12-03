@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { user, setUser, loading } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -27,8 +27,8 @@ const Navbar = () => {
       <div className="nav-container">
 
         {/* Mobile Hamburger */}
-        <div 
-          className="hamburger" 
+        <div
+          className="hamburger"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? "✖" : "☰"}
@@ -53,14 +53,27 @@ const Navbar = () => {
         <div className="nav-right">
           {user ? (
             <>
-              <Link to="/profile" className="nav-avatar">
+              {/* <Link to="/profile" className="nav-avatar">
                 <img src="https://i.ibb.co/4pDNDk1/avatar.png" alt="avatar" />
-              </Link>
-              <Link onClick={()=> handleLogout()} className="logout-btn">
+              </Link> */}
+              <div>
+                {
+                  user.type === "admin" ? (
+                    <Link to="/admin/students">
+                      All Students
+                    </Link>
+                  ) : (
+                    <Link to="/profile" className="nav-avatar">
+                      <img src="https://i.ibb.co/4pDNDk1/avatar.png" alt="avatar" />
+                    </Link>
+                  )
+                }
+              </div>
+              <Link onClick={() => handleLogout()} className="logout-btn">
                 Logout
               </Link>
             </>
-            
+
           ) : (
             <Link to="/login" className="login-btn">
               Login
