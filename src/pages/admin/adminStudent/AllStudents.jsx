@@ -28,7 +28,7 @@ export default function AllStudents() {
     let isConfirmed = confirm(`Are you sure you want to delete?`);
 
     if (isConfirmed) {
-      alert("Item deleted"); //delete logic here
+      alert("under construction"); //delete logic here
     } else {
       alert("Deletion cancelled");
     }
