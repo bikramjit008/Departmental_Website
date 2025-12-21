@@ -50,7 +50,29 @@
   font-size: 13px;
 }
 
+.del-btn {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right: 70px;
+  padding: 6px 12px;
+  background-color: #d60101;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.del-btn:hover {
+  background-color: #a80000;
+}
+
 .student-card:hover .view-btn {
+  display: inline-block;
+}
+
+.student-card:hover .del-btn {
   display: inline-block;
 }
 
