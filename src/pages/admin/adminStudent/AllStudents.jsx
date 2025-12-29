@@ -23,16 +23,32 @@ export default function AllStudents() {
     alert("Under development");
   };
 
-  const del_stn = (e) => {
+  const del_stn = async (e, id) => {
     e.stopPropagation();
     let isConfirmed = confirm(`Are you sure you want to delete?`);
 
-    if (isConfirmed) {
-      alert("under construction"); //delete logic here
-    } else {
+    if (!isConfirmed) {
       alert("Deletion cancelled");
+      return;
+    }
+
+    try {
+      await axios.delete(`${API}/api/admin/student/${id}`, {
+        withCredentials: true,
+      });
+
+      alert("Student deleted successfully");
+
+      // Remove deleted student from UI without reload
+      setStudents(prev =>
+        prev.filter(st => st.academic.registration !== id)
+      );
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete student");
     }
   };
+
 
   return (
     <div className="students-container">
@@ -81,9 +97,10 @@ export default function AllStudents() {
               <strong>Semester:</strong> {student.academic.currentSemester}
             </p>
             <button className="view-btn">View</button>
-            <button className="del-btn" onClick={(e) => del_stn(e)}>
+            <button className="del-btn" onClick={(e) => del_stn(e, student.academic.registration)}>
               Delete
             </button>
+
           </div>
         ))}
       </div>
