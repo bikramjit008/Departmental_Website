@@ -31,3 +31,22 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 40px;
 }
+
+.alumni-card-wrapper {
+  position: relative;
+  padding-bottom: 12px;
+}
+
+/* neatly places delete button under card */
+.alumni-del-btn {
+  display: block;
+  margin: 12px auto 0;
+  padding: 8px 16px;
+  background: #d60101;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
